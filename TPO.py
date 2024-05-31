@@ -21,12 +21,14 @@ def ingresar_ventas():
     
     num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
     if num_vendedor<0:
-        valor_vendedor_valido()
+        num_vendedor=valor_vendedor_valido()
     vendedores.append(num_vendedor)
     while num_vendedor != -1:
         importe_venta = float(input("Ingrese el importe de la venta: "))
         ventas.append(importe_venta)
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
+        if num_vendedor<0:
+        num_vendedor=valor_vendedor_valido()
         vendedores.append(num_vendedor)
         
     return ventas, vendedores
