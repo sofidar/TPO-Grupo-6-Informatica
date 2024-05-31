@@ -15,8 +15,8 @@
 
 def valor_vendedor_valido(numerovendedor):
     while numerovendedor<0:
-        numerovendedor
-        
+        numerovendedor=int(input("Ingrese un número de vendedor positivo: "))
+    return (numerovendedor)    
     
 def ingresar_ventas():
     vendedores = [ ]
