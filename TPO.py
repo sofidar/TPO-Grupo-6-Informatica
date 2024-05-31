@@ -28,3 +28,10 @@ def ingresar_ventas():
         
     return ventas, vendedores, cantidad_ventas_por_vendedor
 
+def metododeinsercion(lista):
+    for i in range(1, len(lista)):
+        aux = lista[i]
+        j=i
+        while j>0 and lista[j-1]>aux:
+            j= j-1
+        lista[j] = aux
