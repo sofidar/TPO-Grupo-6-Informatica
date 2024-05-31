@@ -6,7 +6,7 @@
 #· Importe y número de vendedor correspondiente a la mayor venta realizada.
 #La cantidad de vendedores no se conoce. Este dato deberá deducirse se las ventas ingresadas.
 
-#una fucnión que ingrese datos (las dos listas)
+#una fucnión que ingrese datos (las  listas)
 #una función que sea el método de inserción
 #una función que de total vendido por vendedor
 #función de promedio de ventas x vendedor
