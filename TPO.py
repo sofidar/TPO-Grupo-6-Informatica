@@ -16,7 +16,6 @@
 def ingresar_ventas():
     vendedores = [ ]
     ventas = [ ]
-    cantidad_ventas_por_vendedor = [ ]
     
     num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
     vendedores.append(num_vendedor)
@@ -26,7 +25,7 @@ def ingresar_ventas():
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
         vendedores.append(num_vendedor)
         
-    return ventas, vendedores, cantidad_ventas_por_vendedor
+    return ventas, vendedores
 
 def metododeinsercion(lista):
     for i in range(1, len(lista)):
@@ -35,3 +34,12 @@ def metododeinsercion(lista):
         while j>0 and lista[j-1]>aux:
             j= j-1
         lista[j] = aux
+
+def calcular_total_por_vendedor(ventas, vendedores, vendedor):
+    total_por_vendedor = [ ]
+    for i in range(len(ventas)):
+        if vendedores[i] == vendedor:
+            total = total + ventas[i]
+            total.append(total_por_vendedor)
+    return
+    
