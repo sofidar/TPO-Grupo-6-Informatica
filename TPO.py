@@ -35,10 +35,10 @@ def metododeinsercion(lista):
             j= j-1
         lista[j] = aux
 
-def calcular_total_por_vendedor(ventas, vendedores, vendedor):
+def calcular_total_por_vendedor(ventas, vendedores, num_vendedor):
     total_por_vendedor = [ ]
     for i in range(len(ventas)):
-        if vendedores[i] == vendedor:
+        if vendedores[i] == num_vendedor:
             total = total + ventas[i]
             total.append(total_por_vendedor)
     return
