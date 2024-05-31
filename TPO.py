@@ -12,26 +12,17 @@
 #función de promedio de ventas x vendedor
 # función del vendedor con mayor cantidad de ventas --> buscar 
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
-
-def valor_vendedor_valido(numerovendedor):
-    while numerovendedor<0:
-        numerovendedor=int(input("Ingrese un número de vendedor positivo: "))
-    return (numerovendedor)    
     
 def ingresar_ventas():
     vendedores = [ ]
     ventas = [ ]
     
     num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
-    if num_vendedor<0:
-        num_vendedor=valor_vendedor_valido()
     vendedores.append(num_vendedor)
     while num_vendedor != -1:
         importe_venta = float(input("Ingrese el importe de la venta: "))
         ventas.append(importe_venta)
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
-        if num_vendedor<0:
-            num_vendedor=valor_vendedor_valido()
         vendedores.append(num_vendedor)
         
     return ventas, vendedores
