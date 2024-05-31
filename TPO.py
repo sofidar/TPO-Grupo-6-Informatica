@@ -54,4 +54,4 @@ def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
     return total / cantidad_ventas if cantidad_ventas != 0 else 0
 
 
-ingresar_ventas()
+ventas, vendedores = ingresar_ventas()
