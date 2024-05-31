@@ -13,22 +13,12 @@
 # función del vendedor con mayor cantidad de ventas --> buscar 
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
     
-def ingresar_ventas():
-    vendedores = [ ]
-    ventas = [ ]
-    
-    num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
-    if num_vendedor>0:
-        vendedores.append(num_vendedor)
-        while num_vendedor != -1:
-            importe_venta = float(input("Ingrese el importe de la venta: "))
-            ventas.append(importe_venta)
-            num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
-            vendedores.append(num_vendedor)
-    else: 
-        
-        
-    return ventas, vendedores
+def leervendedor(maximo):
+    n = int(input("Numero vendedor? (-1 para terminar)"))
+    while n!= -1 and (n < 1 or n > maximo):
+        print("***Vendedor invalido***")
+        n = int(input("Numero vendedor? (-1 para terminar)"))
+    return n
 
 def metododeinsercion(lista):
     for i in range(1, len(lista)):
