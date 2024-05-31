@@ -44,11 +44,19 @@ def metododeinsercion(lista):
             j= j-1
         lista[j] = aux
 
-def calcular_total_por_vendedor(ventas, vendedores, num_vendedor):
-    total_por_vendedor = [ ]
+def calcular_total_por_vendedor(ventas, vendedores, vendedor):
+    total = 0
     for i in range(len(ventas)):
-        if vendedores[i] == num_vendedor:
-            total = total + ventas[i]
-            total.append(total_por_vendedor)
-    return
+        if vendedores[i] == vendedor:
+            total += ventas[i]
+    return total
+
+def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
+    total = 0
+    cantidad_ventas = 0
+    for i in range(len(ventas)):
+        if vendedores[i] == vendedor:
+            total += ventas[i]
+            cantidad_ventas += 1
+    return total / cantidad_ventas if cantidad_ventas != 0 else 0
     
