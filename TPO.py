@@ -14,6 +14,9 @@
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
 
 def valor_vendedor_valido(numerovendedor):
+    while numerovendedor<0:
+        numerovendedor
+        
     
 def ingresar_ventas():
     vendedores = [ ]
