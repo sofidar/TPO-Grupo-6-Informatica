@@ -26,5 +26,5 @@ def ingresar_ventas():
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
         vendedores.append(num_vendedor)
         
-    return ventas
+    return ventas, vendedores, cantidad_ventas_por_vendedor
 
