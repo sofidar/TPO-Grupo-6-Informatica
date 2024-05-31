@@ -16,10 +16,8 @@
 def ingresar_ventas():
     ventas = [ ]
     
-    while True:
+    while num_vendedor!=-1:
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
-        if num_vendedor == -1:
-            break
         
         importe_venta = float(input("Ingrese el importe de la venta: "))
         
