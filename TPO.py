@@ -31,7 +31,7 @@ def ingresar_ventas():
         ventas.append(importe_venta)
         num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
         if num_vendedor<0:
-        num_vendedor=valor_vendedor_valido()
+            num_vendedor=valor_vendedor_valido()
         vendedores.append(num_vendedor)
         
     return ventas, vendedores
