@@ -16,7 +16,7 @@
 def leervendedor( ):
     vendedor = [ ]
     num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
-    while num_vendedor!= -1 and num_vendedor > 1:
+    while num_vendedor!= -1 and num_vendedor < 0:
         print("*Vendedor invalido*")
         num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
         num_vendedor.append(vendedor)
@@ -39,6 +39,15 @@ def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
             cantidad_ventas += 1
     return total / cantidad_ventas if cantidad_ventas != 0 else 0
 
+#opción para dar vuelta una lista y ordenarla de mayor a menor (robada a nuestro compañero)
+# def inversorLista(lista):
+   # listaInvertida = []
+
+    #for i in range(len(lista) -1, -1, -1):
+     #   listaInvertida.append(lista[i])
+    #return listaInvertida
+        
+print(inversorLista(number2List(a,b)))
 
 ventas, vendedores = ingresar_ventas()
 
