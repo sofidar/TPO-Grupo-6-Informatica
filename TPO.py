@@ -14,13 +14,24 @@
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
     
 def leervendedor( ):
-    vendedor = [ ]
     num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
     while num_vendedor!= -1 and num_vendedor < 0:
         print("*Vendedor invalido*")
         num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
-        num_vendedor.append(vendedor)
-    return 
+    return num_vendedor
+
+def ingresar_datos():
+    VENDEDORES = 50
+    ventas = []
+    for i in range (VENDEDORES + 1):
+        ventas.append(0)
+    vendedor = leervendedor(VENDEDORES)
+    while vendedor != -1:
+        importe = int(input("Importe de la venta?"))
+        ventas[vendedor] = ventas[vendedr] + importe
+        vendedor = leervendedor(VENDEDORES)
+    for i in range (1, VENDEDORES + 1):
+        print("El vendedor", i, "vendió $", ventas[i])
 
 def metododeinsercion(lista):
     for i in range(1, len(lista)):
