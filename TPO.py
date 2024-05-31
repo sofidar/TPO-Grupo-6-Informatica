@@ -16,6 +16,8 @@
 def ingresar_ventas():
     vendedores = [ ]
     ventas = [ ]
+    cantidad_ventas_por_vendedor = [ ]
+    
     num_vendedor = int(input("Ingrese el número de vendedor (-1 para terminar): "))
     vendedores.append(num_vendedor)
     while num_vendedor != -1:
