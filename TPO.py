@@ -57,4 +57,4 @@ def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
 ventas, vendedores = ingresar_ventas()
 
 total_por_vendedor = calcular_promedio_por_vendedor(ventas, vendedores, vendedor)
-total_por_vendedor_ordenado = insertion_sort(total_por_vendedor)
+total_por_vendedor_ordenado = metododeinsercion(total_por_vendedor)
