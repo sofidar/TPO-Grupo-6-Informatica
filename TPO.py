@@ -13,27 +13,36 @@
 # función del vendedor con mayor cantidad de ventas --> buscar 
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
     
-def leervendedor( ):
-    num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
-    while num_vendedor!= -1 and num_vendedor < 0:
-        print("*Vendedor invalido*")
-        num_vendedor = int(input("Numero vendedor? (-1 para terminar)"))
+def leervendedor(): #Asegura que el numero de vendedor sea positivo
+    num_vendedor = int(input("Numero de vendedor? (-1 para terminar) "))
+    while num_vendedor != -1 and num_vendedor < 1:
+        print("El número de vendedor es invalido, ingrese un numero positivo")
+        num_vendedor = int(input("Numero de vendedor? (-1 para terminar) "))
     return num_vendedor
 
-def ingresar_datos():
-    VENDEDORES = 50
-    ventas = []
-    for i in range (VENDEDORES + 1):
-        ventas.append(0)
-    vendedor = leervendedor(VENDEDORES)
-    while vendedor != -1:
-        importe = int(input("Importe de la venta?"))
-        ventas[vendedor] = ventas[vendedr] + importe
-        vendedor = leervendedor(VENDEDORES)
-    for i in range (1, VENDEDORES + 1):
-        print("El vendedor", i, "vendió $", ventas[i])
 
-def metododeinsercion(lista):
+def ingresar_datos(): #Ingresa el valor de las ventas de cada vendedor
+    ventas = [0]  # Inicia la lista con un elemento para el vendedor 0
+    num_ventas = [0]  # Inicia la lista con un elemento para contar las ventas del vendedor 0
+    vendedor = leervendedor()
+    while vendedor != -1:
+        importe = int(input("Importe de la venta? "))
+        # Asegura que la lista de ventas tenga suficientes elementos para el nuevo vendedor
+        while len(ventas) <= vendedor:
+            ventas.append(0)
+            num_ventas.append(0)
+        ventas[vendedor] = ventas[vendedor] + importe
+        num_ventas[vendedor] = num_ventas[vendedor] + 1
+        vendedor = leervendedor()
+
+    for i in range(1, len(ventas)):
+        if num_ventas[i] > 0:
+            promedio = ventas[i] / num_ventas[i]
+            print("El vendedor", i,"vendió $", ventas[i], "en total con un promedio de $",promedio,"por venta.")
+        else:
+            print("El vendedor", i,"no tiene ventas registradas.")
+
+def metododeinsercion(lista): #Ordena una lista mediante el metodo de insercion
     for i in range(1, len(lista)):
         aux = lista[i]
         j=i
@@ -41,14 +50,7 @@ def metododeinsercion(lista):
             j= j-1
         lista[j] = aux
 
-def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
-    total = 0
-    cantidad_ventas = 0
-    for i in range(len(ventas)):
-        if vendedores[i] == vendedor:
-            total += ventas[i]
-            cantidad_ventas += 1
-    return total / cantidad_ventas if cantidad_ventas != 0 else 0
+ingresar_datos()
 
 #opción para dar vuelta una lista y ordenarla de mayor a menor (robada a nuestro compañero)
 # def inversorLista(lista):
@@ -58,9 +60,9 @@ def calcular_promedio_por_vendedor(ventas, vendedores, vendedor):
      #   listaInvertida.append(lista[i])
     #return listaInvertida
         
-print(inversorLista(number2List(a,b)))
+#print(inversorLista(number2List(a,b)))
 
-ventas, vendedores = ingresar_ventas()
+#ventas, vendedores = ingresar_ventas()
 
-total_por_vendedor = calcular_promedio_por_vendedor(ventas, vendedores, vendedor)
-total_por_vendedor_ordenado = metododeinsercion(total_por_vendedor)
+#total_por_vendedor = calcular_promedio_por_vendedor(ventas, vendedores, vendedor)
+#total_por_vendedor_ordenado = metododeinsercion(total_por_vendedor)
