@@ -13,7 +13,7 @@
 # función del vendedor con mayor cantidad de ventas --> buscar 
 #función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
     
-def leervendedor(): #Asegura que el numero de vendedor sea positivo
+def leer_vendedor(): #Asegura que el numero de vendedor sea positivo
     num_vendedor = int(input("Numero de vendedor? (-1 para terminar) "))
     while num_vendedor != -1 and num_vendedor < 1:
         print("El número de vendedor es invalido, ingrese un numero positivo")
@@ -24,7 +24,7 @@ def leervendedor(): #Asegura que el numero de vendedor sea positivo
 def ingresar_datos(): #Ingresa el valor de las ventas de cada vendedor
     ventas = [0]  # Inicia la lista con un elemento para el vendedor 0
     num_ventas = [0]  # Inicia la lista con un elemento para contar las ventas del vendedor 0
-    vendedor = leervendedor()
+    vendedor = leer_vendedor()
     while vendedor != -1:
         importe = int(input("Importe de la venta? "))
         # Asegura que la lista de ventas tenga suficientes elementos para el nuevo vendedor
@@ -33,7 +33,7 @@ def ingresar_datos(): #Ingresa el valor de las ventas de cada vendedor
             num_ventas.append(0)
         ventas[vendedor] = ventas[vendedor] + importe
         num_ventas[vendedor] = num_ventas[vendedor] + 1
-        vendedor = leervendedor()
+        vendedor = leer_vendedor()
 
     for i in range(1, len(ventas)):
         if num_ventas[i] > 0:
@@ -42,7 +42,7 @@ def ingresar_datos(): #Ingresa el valor de las ventas de cada vendedor
         else:
             print("El vendedor", i,"no tiene ventas registradas.")
 
-def metododeinsercion(lista): #Ordena una lista mediante el metodo de insercion
+def metodo_de_insercion(lista): #Ordena una lista mediante el metodo de insercion
     for i in range(1, len(lista)):
         aux = lista[i]
         j=i
