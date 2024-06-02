@@ -53,16 +53,25 @@ def metodo_de_insercion(lista): #Ordena una lista mediante el metodo de insercio
 ingresar_datos()
 
 #opción para dar vuelta una lista y ordenarla de mayor a menor (robada a nuestro compañero)
-# def inversorLista(lista):
-   # listaInvertida = []
+def number2List(a,b):
+    n = int(input("Ingresa un numero para agregar a la lista: "))
+    lista = []
+    while n != -1:
+        if n >= a and n <= b or (n >= b and n <= a):
+            lista.append(n)
+        else: 
+            print("Error: El numero no esta entre ",a," y ",b)
+        n = int(input("Ingresa un numero para agregar a la lista: "))
+    return lista
 
-    #for i in range(len(lista) -1, -1, -1):
-     #   listaInvertida.append(lista[i])
-    #return listaInvertida
+a = int(input("Ingrese el valor del limite A: "))
+b = int(input("Ingrese el valor del limite B: "))
+
+def inversorLista(lista):
+    listaInvertida = []
+
+    for i in range(len(lista) -1, -1, -1):
+        listaInvertida.append(lista[i])
+    return listaInvertida
         
-#print(inversorLista(number2List(a,b)))
-
-#ventas, vendedores = ingresar_ventas()
-
-#total_por_vendedor = calcular_promedio_por_vendedor(ventas, vendedores, vendedor)
-#total_por_vendedor_ordenado = metododeinsercion(total_por_vendedor)
+print(inversorLista(number2List(a,b)))
