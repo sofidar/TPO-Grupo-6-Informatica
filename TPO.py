@@ -1,83 +1,90 @@
-#Una empresa cuenta con un plantel de vendedores, numerados con valores positivos arbitrarios. Por cada venta realizada se ingresa por teclado el número de vendedor y el importe
-#de la misma, donde un número de vendedor -1 indica el final de los datos. Realizar un programa para imprimir:
-#· Total vendido por cada vendedor, ordenado de mayor a menor según el total vendido.
-#· Importe de la venta promedio por vendedor.
-#· Número de vendedor con mayor cantidad de ventas.
-#· Importe y número de vendedor correspondiente a la mayor venta realizada.
-#La cantidad de vendedores no se conoce. Este dato deberá deducirse se las ventas ingresadas.
-
-#una fucnión que ingrese datos (las  listas)
-#una función que sea el método de inserción
-#una función que de total vendido por vendedor
-#función de promedio de ventas x vendedor
-# función del vendedor con mayor cantidad de ventas --> buscar 
-#función de mayor venta realizada --> buscar el mayor valor de la lista de ventas
-    
 def leervendedor():
     # Asegura que el número de vendedor sea positivo
     num_vendedor = int(input("Número vendedor? (-1 para terminar): "))
     while num_vendedor != -1 and num_vendedor < 1:
-        print("*Vendedor inválido*")
+        print("Vendedor inválido, por favor ingrese un número de vendedor positivo")
         num_vendedor = int(input("Número vendedor? (-1 para terminar): "))
+
     return num_vendedor
 
 def ingresar_datos():
-    # Ingresa el valor de las ventas de cada vendedor
-    ventas = [0]  # Inicia la lista con un elemento para el vendedor 0
-    num_ventas = [0]  # Inicializa la lista con un elemento para contar las ventas del vendedor 0
-    promedios = []
+    # Crea listas para cada tipo de dato
+    vendedores = []
     vendedor = leervendedor()
+    ventas = []
+    cantidades = []
+    ventas_individuales = []
+    
+    # Añade cada tipo de dato en bucle
     while vendedor != -1:
-        importe = float(input("Importe de la venta? "))
-        # Asegurarnos de que la lista de ventas tenga suficientes elementos para el nuevo vendedor
-        while len(ventas) <= vendedor:
-            ventas.append(0)
-            num_ventas.append(0)
-        ventas[vendedor] = ventas[vendedor] + importe
-        num_ventas[vendedor] = num_ventas[vendedor] + 1
+        valor_venta = float(input("Importe de la venta? "))
+        ventas_individuales.append((vendedor, valor_venta))
+
+        encontrado = False # Verifica si un vendedor se encuentra ya en la lista
+        for i in range(len(vendedores)):
+            if vendedores[i] == vendedor:
+                ventas[i] = ventas[i] + valor_venta
+                cantidades[i] = cantidades[i] + 1
+                encontrado = True
+
+        if encontrado==False:
+            vendedores.append(vendedor)
+            ventas.append(valor_venta)
+            cantidades.append(1)
+
         vendedor = leervendedor()
 
-    for i in range(1, len(ventas)):
-        if num_ventas[i] > 0:
-            promedio = ventas[i] / num_ventas[i]
-            promedios.append(promedio)
-            print("El vendedor", i, "vendió $", ventas[i]," en total con un promedio de $",promedio," por venta.")
-    return promedios, ventas
+    return vendedores, ventas, cantidades, ventas_individuales
 
-def metododeinsercion(lista, referencias):
-    # Ordena una lista mediante el método de inserción
-    for i in range(1, len(lista)):
-        aux = lista[i]
-        aux_ref = referencias[i]
-        j = i
-        while j > 0 and lista[j - 1] > aux:
-            lista[j] = lista[j - 1]
-            referencias[j] = referencias[j - 1]
-            j -= 1
-        lista[j] = aux
-        referencias[j] = aux_ref
-    return lista, referencias
+def ordenar(vendedores, ventas, cantidades):
+    # Ordena a los vendedores segun las ventas totales, de mayor a menor
+    for i in range(len(ventas)):
+        for j in range(i + 1, len(ventas)):
+            if ventas[j] > ventas[i]:
+                vendedores[i], vendedores[j] = vendedores[j], vendedores[i]
+                ventas[i], ventas[j] = ventas[j], ventas[i]
+                cantidades[i], cantidades[j] = cantidades[j], cantidades[i]
 
-def inversorlista(lista):
-    listaInvertida = []
-    for i in range(len(lista) -1, -1, -1):
-        listaInvertida.append(lista[i])
-    return listaInvertida
+    return vendedores, ventas, cantidades
+
+def busqueda_mayor_cantidad(cantidades):
+    # Busca al vendedor con la mayor cantidad de ventas
+    mayor_cantidad = 0
+    indice_mayor = 0
+    for i in range(len(cantidades)):
+        if cantidades[i] > mayor_cantidad:
+            mayor_cantidad = cantidades[i]
+            indice_mayor = i
+
+    return indice_mayor
+
+def busqueda_mayor_venta(ventas_individuales):
+    # Busca la venta de mayor valor y guarda el numero de su vendedor
+    mayor_venta = 0
+    vendedor_mayor_venta = 0
+    for num_vendedor, valor_venta in ventas_individuales:
+        if valor_venta > mayor_venta:
+            mayor_venta = valor_venta
+            vendedor_mayor_venta = num_vendedor
+
+    return vendedor_mayor_venta, mayor_venta
+
+def imprimir_resultados(vendedores,ventas,cantidades,ventas_individuales):
+    # Imprime los resultados pedidos en la consigna
+    print("\nVentas totales por vendedor (de mayor a menor) y promedios:\n")
+    for i in range(len(vendedores)):
+        promedio = ventas[i] / cantidades[i]
+        print("Vendedor número:",vendedores[i],"Ventas $",ventas[i],"  Promedio por venta:",promedio,"\n")
+
+    indice_mayor = busqueda_mayor_cantidad(cantidades)
+    print("El vendedor con la mayor cantidad de ventas es el número",vendedores[indice_mayor],"con",cantidades[indice_mayor],"ventas\n")
+
+    vendedor_mayor_venta, mayor_venta = busqueda_mayor_venta(ventas_individuales)
+    print("La mayor venta realizada es de $",mayor_venta,"por el vendedor número",vendedor_mayor_venta)
+
 
 # Programa principal
-promedios, ventas = ingresar_datos()
-referencias = list(range(len(ventas) + 1))  # Referencias a los vendedores
 
-
-ventas_ordenadas, referencias_ordenadas = metododeinsercion(ventas, referencias)
-ventas_ordenadas_desc = inversorlista(ventas_ordenadas)
-referencias_ordenadas_desc = inversorlista(referencias_ordenadas)
-
-print("Ventas totales ordenadas de menor a mayor:")
-for i in range(len(ventas_ordenadas)):
-    print("Vendedor", referencias_ordenadas[i]," Total $",ventas_ordenadas[i])
-
-print("Ventas totales ordenadas de mayor a menor:")
-for i in range(len(ventas_ordenadas_desc)):
-    print("Vendedor ",referencias_ordenadas_desc[i]," Total $",ventas_ordenadas_desc[i])
-
+vendedores, ventas, cantidades, ventas_individuales = ingresar_datos()
+vendedores, ventas, cantidades = ordenar(vendedores, ventas, cantidades)
+imprimir_resultados(vendedores, ventas, cantidades, ventas_individuales)
